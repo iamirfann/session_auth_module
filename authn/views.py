@@ -31,15 +31,6 @@ class RegisterApiView(APIView):
     serializer_class = RegisterSerializer
 
     def get(self, request):
-        req = request.POST
-        username = req['username']
-        email = req['email']
-        password1 = req['password1']
-        password2 = req['password2']
-        data = {'username': username, 'email': email, 'password1': password1, 'password2': password2}
-        # RegisterSerializer.is_valid(raise_exception=True)
-        # User.save(data)
-        print(data)
         return render(request, 'authn/register.html')
     
     def post(self, request):
