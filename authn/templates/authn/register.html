@@ -76,49 +76,49 @@
 				<div class="d-flex justify-content-center form_container">
 
 					<form method="POST" action="">
-						<input name = "username", placeholder="username", type="text"/>
-						<input name = "email", placeholder="email", type="text"/>
-						<input name = "password1", placeholder="enter password", type="text"/>
-						<input name = "password2", placeholder="re-enter password", type="text"/>
-						<input type="submit"/>
 
-						<!-- <div class="input-group mb-3">
+						{% csrf_token %}
+						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							{{form.username}}
+							<input type="text" name="username" placeholder="Username..." class="form-control">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
 							</div>
-							{{form.email}}
+							<input type="email" name="email" placeholder="email..." class="form-control">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							{{form.password1}}
+							<input type="password" name="password1" placeholder="Password..." class="form-control">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							{{form.password2}}
+							<input type="password" name="password2" placeholder="Re-enter Password..." class="form-control">
 						</div>
 
 
 
 				   		<div class="d-flex justify-content-center mt-3 login_container">
 				 			<input class="btn login_btn" type="submit" value="Register Account">
-				   		</div> -->
+				   		</div>
 
 					</form>
 				</div>
 
 				{{form.errors}}
 				
-
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -128,11 +128,11 @@
 		 */
 
 		//Query All input fields
-		// var form_fields = document.getElementsByTagName('input')
-		// form_fields[1].placeholder='Username..';
-		// form_fields[2].placeholder='Email..';
-		// form_fields[3].placeholder='Enter password...';
-		// form_fields[4].placeholder='Re-enter Password...';
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Username..';
+		form_fields[2].placeholder='Email..';
+		form_fields[3].placeholder='Enter password...';
+		form_fields[4].placeholder='Re-enter Password...';
 
 
 		for (var field in form_fields){	
