@@ -48,7 +48,10 @@ class RegisterApiView(APIView):
         # RegisterSerializer.is_valid()
         # RegisterSerializer.save(data)
         else:
-            User.objects.create(username=username, email=email, password=password2, is_superuser=True)
+            User.objects.create(username=username, email=email, is_superuser=True)
+            user = User.objects.get(email=email)
+            user.set_password(password2)
+            user.save()
             return redirect('login')
         # print(data)
         # return render(request, "authn/register.html")
@@ -62,8 +65,9 @@ class LoginApiView(APIView):
         req = request.POST
         username = req['username']
         password = req['password']
-        get_user = User.objects.get(username=username, password=password)
-        if get_user:
+        user = User.objects.get(username=username)
+        check_user = user.check_password(password)
+        if check_user:
             return render(request, 'authn/sucess.html')
         return render(request, 'authn/login.html')
         
