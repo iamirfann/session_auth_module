@@ -9,6 +9,7 @@ from .models import User
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+
 # Create your views here.
 
 def RegisterView(request):
@@ -24,9 +25,11 @@ def RegisterView(request):
     print(data)
     return render(request, 'authn/register.html')
 
+
 def LoginView(request):
     print("request", request.body)
     return render(request, 'authn/login.html')
+
 
 class RegisterApiView(APIView):
     # queryset = Product.objects.all().order_by('-id')
@@ -34,7 +37,7 @@ class RegisterApiView(APIView):
 
     def get(self, request):
         return render(request, 'authn/register.html')
-    
+
     def post(self, request):
         req = request.POST
         username = req['username']
@@ -53,11 +56,12 @@ class RegisterApiView(APIView):
         # print(data)
         # return render(request, "authn/register.html")
 
+
 class LoginApiView(APIView):
-    
+
     def get(self, request):
         return render(request, 'authn/login.html')
-    
+
     def post(self, request):
         req = request.POST
         username = req['username']
@@ -66,7 +70,8 @@ class LoginApiView(APIView):
         if get_user:
             return render(request, 'authn/sucess.html')
         return render(request, 'authn/login.html')
-        
+
+
 def logoutUser(request):
-	# logout(request)
-	return redirect('login')
+    # logout(request)
+    return redirect('login')
