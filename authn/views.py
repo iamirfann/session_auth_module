@@ -29,7 +29,6 @@ def LoginView(request):
     return render(request, 'authn/login.html')
 
 class RegisterApiView(APIView):
-    # queryset = Product.objects.all().order_by('-id')
     serializer_class = RegisterSerializer
 
     def get(self, request):
@@ -43,18 +42,17 @@ class RegisterApiView(APIView):
         password2 = req['password2']
         data = {'username': username, 'email': email, 'password1': password1, 'password2': password2}
         get_username = User.objects.filter(username=username).exists()
+
         if get_username:
             return Response({"error": "username already exists"})
-        # RegisterSerializer.is_valid()
-        # RegisterSerializer.save(data)
+
         else:
             User.objects.create(username=username, email=email, is_superuser=True)
             user = User.objects.get(email=email)
             user.set_password(password2)
             user.save()
             return redirect('login')
-        # print(data)
-        # return render(request, "authn/register.html")
+
 
 class LoginApiView(APIView):
     
@@ -72,5 +70,4 @@ class LoginApiView(APIView):
         return render(request, 'authn/login.html')
         
 def logoutUser(request):
-	# logout(request)
 	return redirect('login')
