@@ -6,5 +6,6 @@ urlpatterns = [
     path('login/', views.LoginApiView.as_view(), name='login'),
     path('register/', views.RegisterApiView.as_view(), name='register'),
     # path('', include('auth.urls'))
-    path('logout/', views.logoutUser, name='logout')
+    path('logout/', views.logoutUser, name='logout'),
+    path('dash/', views.Dashview.as_view(), name='dashboard')
 ]

@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'session_auth.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        'ENGINE': 'django_tenants.postgresql_backend',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'session_auth',
         'USER': 'irfan',
         'PASSWORD': 'irfan9962',
@@ -134,3 +134,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'authn.User'
+AUTHENTICATION_BACKENDS  = ['django.contrib.auth.backends.ModelBackend']
